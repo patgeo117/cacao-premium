@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 import { CartProvider } from "@/hooks/use-cart";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     "chocolate para batir",
     "tienda online",
   ],
-  authors: [{ name: "Trip Digital" }],
+  authors: [{ name: "George Patiño" }],
   openGraph: {
     type: "website",
     locale: SITE_CONFIG.locale,
@@ -76,7 +75,6 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <CartSidebar />
-          <Toaster position="top-center" richColors />
         </CartProvider>
       </body>
     </html>

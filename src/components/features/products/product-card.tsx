@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,46 +14,31 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
-  const isLowStock = product.stock > 0 && product.stock <= 10;
-  const isOutOfStock = product.stock === 0;
 
   return (
-    <motion.article
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3 }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-chocolate-100 bg-white shadow-sm transition-shadow hover:shadow-lg hover:shadow-chocolate-900/5"
-    >
-      <div className="relative aspect-square overflow-hidden bg-beige">
+    <article className="flex flex-col overflow-hidden rounded-xl border border-chocolate-100 bg-white">
+      <div className="relative aspect-square bg-beige">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, 33vw"
         />
-        {product.discount && (
-          <Badge className="absolute left-3 top-3 bg-cacao-green text-white">
-            -{product.discount}%
-          </Badge>
-        )}
-        <Badge
-          variant="secondary"
-          className="absolute right-3 top-3 bg-chocolate-900/80 text-cream backdrop-blur-sm"
-        >
+        <Badge className="absolute right-3 top-3 bg-chocolate-800 text-cream">
           {product.cacaoPercentage}% cacao
         </Badge>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-4">
         <h3 className="font-heading text-lg font-semibold text-chocolate-900">
           {product.name}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-chocolate-500">
+        <p className="mt-1 flex-1 text-sm text-chocolate-500 line-clamp-2">
           {product.description}
         </p>
-
-        <div className="mt-4 flex items-baseline gap-2">
-          <span className="text-xl font-bold text-chocolate-900">
+        <div className="mt-3 flex items-baseline gap-2">
+          <span className="text-lg font-bold text-chocolate-900">
             {formatCurrency(product.price)}
           </span>
           {product.previousPrice && (
@@ -63,27 +47,15 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
         </div>
-
-        <p className="mt-1 text-xs text-chocolate-500">
-          {isOutOfStock ? (
-            <span className="text-red-600">Agotado</span>
-          ) : isLowStock ? (
-            <span className="text-amber-600">Últimas {product.stock} unidades</span>
-          ) : (
-            <span>{product.stock} disponibles</span>
-          )}
-        </p>
-
         <Button
-          className="mt-4 w-full bg-chocolate-800 hover:bg-chocolate-900"
-          disabled={isOutOfStock}
+          className="mt-3 w-full bg-chocolate-800 hover:bg-chocolate-900"
           onClick={() => addItem(product)}
         >
           <ShoppingBag className="mr-2 h-4 w-4" />
           Agregar al carrito
         </Button>
       </div>
-    </motion.article>
+    </article>
   );
 }
 

@@ -1,96 +1,59 @@
 import Link from "next/link";
-import { Leaf, MessageCircle } from "lucide-react";
-import { SOCIAL_LINKS } from "@/lib/constants";
+import { Leaf } from "lucide-react";
+import { NAV_LINKS } from "@/lib/constants";
 import { companyInfo } from "@/mock/data";
-import { Separator } from "@/components/ui/separator";
-
-const socialIcons: Record<string, string> = {
-  WhatsApp: "WA",
-  Instagram: "IG",
-  Facebook: "FB",
-  TikTok: "TT",
-  YouTube: "YT",
-};
 
 export function Footer() {
   return (
-    <footer className="border-t border-chocolate-200/60 bg-chocolate-900 text-cream">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-cacao-green">
-                <Leaf className="h-4 w-4 text-cream" />
-              </div>
-              <span className="font-heading text-lg font-semibold">
-                Aquí irá el logo
-              </span>
+    <footer className="border-t border-chocolate-200 bg-chocolate-900 py-10 text-cream">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:justify-between sm:px-6">
+        <div className="max-w-sm">
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-cacao-green">
+              <Leaf className="h-4 w-4" />
             </div>
-            <p className="text-sm leading-relaxed text-chocolate-200">
-              Aquí irá una historia corta de la empresa. Chocolate artesanal
-              100% cacao colombiano, elaborado con pasión desde el grano hasta
-              la tableta.
-            </p>
+            <span className="font-heading font-semibold">Aquí irá el logo</span>
           </div>
-
-          <div>
-            <h3 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-gold">
-              Navegación
-            </h3>
-            <ul className="space-y-2 text-sm text-chocolate-200">
-              <li><Link href="/" className="hover:text-white">Inicio</Link></li>
-              <li><Link href="/#productos" className="hover:text-white">Productos</Link></li>
-              <li><Link href="/nosotros" className="hover:text-white">Nosotros</Link></li>
-              <li><Link href="/contacto" className="hover:text-white">Contacto</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-gold">
-              Contacto
-            </h3>
-            <ul className="space-y-2 text-sm text-chocolate-200">
-              <li>{companyInfo.address}</li>
-              <li>{companyInfo.email}</li>
-              <li>{companyInfo.phone}</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wider text-gold">
-              Redes sociales
-            </h3>
-            <p className="mb-4 text-xs text-chocolate-300">
-              Aquí irán las redes sociales.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  title={social.placeholder}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-chocolate-700 text-xs font-medium text-chocolate-200 transition-colors hover:border-gold hover:text-gold"
-                >
-                  {socialIcons[social.name]}
-                </a>
-              ))}
-            </div>
-            <a
-              href="#"
-              className="mt-4 inline-flex items-center gap-2 text-sm text-cacao-green-light hover:text-white"
-            >
-              <MessageCircle className="h-4 w-4" />
-              WhatsApp
-            </a>
-          </div>
+          <p className="mt-3 text-sm text-chocolate-300">
+            Chocolate artesanal 100% cacao colombiano.
+          </p>
         </div>
 
-        <Separator className="my-8 bg-chocolate-700" />
-
-        <div className="flex flex-col items-center justify-between gap-4 text-xs text-chocolate-400 sm:flex-row">
-          <p>© 2026 Gep,</p>
-          <p>Desarrollado por George Patiño</p>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+            Enlaces
+          </p>
+          <ul className="mt-3 space-y-2 text-sm text-chocolate-300">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-white">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+            Contacto
+          </p>
+          <ul className="mt-3 space-y-1 text-sm text-chocolate-300">
+            <li>{companyInfo.phone}</li>
+            <li>{companyInfo.email}</li>
+          </ul>
+          <a
+            href={`https://wa.me/${companyInfo.whatsapp.replace(/\D/g, "")}`}
+            className="mt-3 inline-block text-sm text-cacao-green-light hover:text-white"
+          >
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center justify-between gap-2 border-t border-chocolate-700 px-4 pt-6 text-xs text-chocolate-500 sm:flex-row sm:px-6">
+        <p>© 2026 Gep,</p>
+        <p>Desarrollado por George Patiño</p>
       </div>
     </footer>
   );
