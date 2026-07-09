@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cacao Premium — Prototipo Tienda Virtual
 
-## Getting Started
+Prototipo visual **100% frontend** para demostrar al cliente cómo sería su tienda de chocolate artesanal. Desarrollado por **Trip Digital**.
 
-First, run the development server:
+> **Objetivo:** Mostrar un producto terminado y profesional. Solo falta conectar backend (NestJS + PostgreSQL + Prisma) para pasar a producción.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Demo en vivo
+
+> URL de Vercel se agregará tras el despliegue.
+
+## Stack tecnológico
+
+| Tecnología | Uso |
+|---|---|
+| Next.js 16 (App Router) | Framework React |
+| TypeScript | Tipado estático |
+| Tailwind CSS v4 | Estilos |
+| shadcn/ui | Componentes UI |
+| Framer Motion | Animaciones |
+| Lucide Icons | Iconografía |
+| Zod + React Hook Form | Preparado para validaciones |
+
+## Qué incluye el prototipo
+
+### Tienda (cliente)
+- **Hero** con animaciones y CTAs
+- **Historia** — misión, visión, valores
+- **Catálogo** — 5 productos con % cacao, precios, descuentos y stock
+- **Experiencia** — pasadía en fábrica de cacao (~$80.000 COP)
+- **Carrito** — sidebar con agregar, eliminar, cantidades, IVA y total
+- **Checkout** — formulario visual + simulación de pasarela de pago
+- **Nosotros** — timeline y galería
+- **Contacto** — formulario y mapa placeholder
+
+### Panel administrativo (demo sin login)
+- Dashboard con métricas simuladas
+- Tabla de productos con CRUD local (modales)
+- Gestión de pedidos con estados
+
+## Qué NO incluye (por diseño)
+
+- Base de datos
+- Backend / APIs
+- Autenticación real
+- Pasarela de pagos (Wompi / Mercado Pago)
+- Persistencia de datos
+
+Todo usa **mock data** en `src/mock/data.ts`.
+
+## Arquitectura preparada para producción
+
+```
+src/
+├── app/              # Rutas (App Router)
+├── components/
+│   ├── layout/       # Header, Footer
+│   ├── sections/     # Secciones de página
+│   ├── features/     # Carrito, checkout, admin
+│   └── ui/           # shadcn/ui
+├── hooks/            # useCart (Context)
+├── lib/
+│   ├── api/          # Cliente API placeholder → NestJS
+│   ├── config/       # Variables de entorno
+│   ├── security/     # JWT, roles (preparado)
+│   └── validations/  # Schemas Zod
+├── mock/             # Datos simulados → reemplazar por API
+└── types/            # Interfaces TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Integraciones futuras preparadas
+- **NestJS** — API REST
+- **PostgreSQL + Prisma** — Base de datos
+- **JWT** — Autenticación y roles
+- **Wompi / Mercado Pago** — Pagos
+- **Cloudinary** — Imágenes
+- **Resend** — Emails transaccionales
+- **Cloudflare** — CDN y seguridad
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Productos simulados
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Producto | Cacao | Precio |
+|---|---|---|
+| Chocolatina Cacao 99% | 99% | $28.000 |
+| Chocolatina Cacao 70% | 70% | $24.000 |
+| Chocolatina Cacao 55% | 55% | $20.000 |
+| Chocolatina Cacao 36% | 36% | $18.000 |
+| Chocolate para Batir | 70% | $22.000 |
 
-## Learn More
+## Desarrollo local
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Instalar dependencias
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Copiar variables de entorno
+cp .env.example .env.local
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Servidor de desarrollo
+npm run dev
+```
 
-## Deploy on Vercel
+Abrir [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev      # Desarrollo
+npm run build    # Build producción
+npm run start    # Servidor producción
+npm run lint     # ESLint
+```
+
+## Rutas
+
+| Ruta | Descripción |
+|---|---|
+| `/` | Página principal |
+| `/checkout` | Proceso de compra |
+| `/nosotros` | Historia y galería |
+| `/contacto` | Formulario de contacto |
+| `/admin` | Panel administrativo |
+| `/admin/pedidos` | Gestión de pedidos |
+
+## Paleta de diseño
+
+- Chocolate oscuro `#3D2314`
+- Crema `#F5F0E8`
+- Beige `#E8DCC8`
+- Verde cacao `#4A5D3A`
+- Dorado sutil `#C4A35A`
+
+## Evolución a producción
+
+1. Reemplazar `src/mock/data.ts` por llamadas a `src/lib/api/client.ts`
+2. Implementar backend NestJS con Prisma + PostgreSQL
+3. Conectar Wompi o Mercado Pago en checkout
+4. Activar middleware JWT para `/admin`
+5. Subir imágenes a Cloudinary
+6. Configurar dominio propio y variables de entorno
+
+## Licencia
+
+Proyecto privado — Trip Digital © 2026
