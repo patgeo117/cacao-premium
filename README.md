@@ -6,7 +6,14 @@ Prototipo visual **100% frontend** para demostrar al cliente cómo sería su tie
 
 ## Demo en vivo
 
-> URL de Vercel se agregará tras el despliegue.
+**https://cacao-premium.vercel.app**
+
+| Recurso | URL |
+|---|---|
+| Tienda | https://cacao-premium.vercel.app |
+| Panel Admin | https://cacao-premium.vercel.app/admin |
+| Checkout | https://cacao-premium.vercel.app/checkout |
+| GitHub | https://github.com/patgeo117/cacao-premium |
 
 ## Stack tecnológico
 
