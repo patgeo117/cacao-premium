@@ -9,7 +9,7 @@ import { companyInfo } from "@/mock/data";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Contáctanos para pedidos, experiencias y más información.",
+  description: "Contáctanos para pedidos y más información.",
 };
 
 export default function ContactoPage() {
@@ -19,7 +19,7 @@ export default function ContactoPage() {
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <h1 className="font-heading text-4xl font-bold">Contacto</h1>
           <p className="mt-3 text-chocolate-200">
-            Estamos aquí para ayudarte con pedidos y experiencias.
+            Estamos aquí para ayudarte con pedidos y más información.
           </p>
         </div>
       </section>

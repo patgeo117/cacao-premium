@@ -40,7 +40,7 @@ export function HeroSection() {
             {companyInfo.description}
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-10">
             <Button
               asChild
               size="lg"
@@ -50,14 +50,6 @@ export function HeroSection() {
                 Comprar ahora
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-cream/30 bg-white/10 text-cream backdrop-blur-sm hover:bg-white/20 hover:text-white"
-            >
-              <Link href="/#experiencias">Conocer la experiencia</Link>
             </Button>
           </div>
         </motion.div>

@@ -40,7 +40,6 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-chocolate-200">
               <li><Link href="/" className="hover:text-white">Inicio</Link></li>
               <li><Link href="/#productos" className="hover:text-white">Productos</Link></li>
-              <li><Link href="/#experiencias" className="hover:text-white">Experiencias</Link></li>
               <li><Link href="/nosotros" className="hover:text-white">Nosotros</Link></li>
               <li><Link href="/contacto" className="hover:text-white">Contacto</Link></li>
             </ul>
@@ -89,8 +88,8 @@ export function Footer() {
         <Separator className="my-8 bg-chocolate-700" />
 
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-chocolate-400 sm:flex-row">
-          <p>© 2026 Trip Digital — Prototipo demostrativo</p>
-          <p>Desarrollado para evolucionar a producción con NestJS + PostgreSQL</p>
+          <p>© 2026 Gep,</p>
+          <p>Desarrollado por George Patiño</p>
         </div>
       </div>
     </footer>

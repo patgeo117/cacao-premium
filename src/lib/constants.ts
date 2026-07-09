@@ -12,7 +12,6 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { href: "/", label: "Inicio" },
   { href: "/#productos", label: "Productos" },
-  { href: "/#experiencias", label: "Experiencias" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
 ] as const;
